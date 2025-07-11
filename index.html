@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贝壳新房搏学考试系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(13, 71, 161, 0.15);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIgLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIC8+PC9zdmc+');
+            opacity: 0.3;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+        
+        .logo-icon {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon i {
+            color: #0d47a1;
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+        
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .login-section, .exam-section, .result-section {
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .login-form {
+            max-width: 480px;
+            margin: 30px auto;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #37474f;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-group label i {
+            color: #1e88e5;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #90a4ae;
+            font-size: 18px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 16px 16px 16px 48px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .form-group input:focus {
+            border-color: #1e88e5;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.15);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(30, 136, 229, 0.4);
+        }
+        
+        .demo-account {
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        
+        .demo-account strong {
+            color: #0d47a1;
+            font-weight: 600;
+        }
+        
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .exam-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .exam-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d47a1;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-grow: 1;
+            max-width: 300px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        
+        .timer {
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(30, 136, 229, 0.08);
+            border: 1px solid #e3f2fd;
+            position: relative;
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .question-number {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.2);
+        }
+        
+        .question-text {
+            font-size: 19px;
+            font-weight: 600;
+            color: #263238;
+            line-height: 1.6;
+            flex: 1;
+        }
+        
+        .options {
+            padding-left: 55px;
+        }
+        
+        .option {
+            margin: 15px 0;
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            background-color: #f0f7ff;
+            border-color: #90caf9;
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            background-color: #e3f2fd;
+            border-color: #1e88e5;
+            box-shadow: 0 4px 10px rgba(30, 136, 229, 0.15);
+        }
+        
+        .option input {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .nav-btn {
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .prev-btn {
+            background-color: #f5f5f5;
+            color: #424242;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .prev-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .next-btn {
+            background: linear-gradient(90deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
+            border: none;
+        }
+        
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(30, 136, 229, 0.4);
+        }
+        
+        .submit-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 16px 50px;
+            background: linear-gradient(90deg, #43a047 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(67, 160, 71, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 160, 71, 0.4);
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0% 70%, #ff9800 70% 85%, #f44336 85% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score-inner {
+            width: 160px;
+            height: 160px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .score-value {
+            font-size: 48px;
+            color: #1e88e5;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .score-text {
+            font-size: 18px;
+            color: #757575;
+            margin-top: 5px;
+        }
+        
+        .result-details {
+            margin-top: 30px;
+        }
+        
+        .result-title {
+            font-size: 28px;
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .result-subtitle {
+            color: #546e7a;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        
+        .detail-cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .detail-card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.1);
+            border: 1px solid #e3f2fd;
+            transition: all 0.3s;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(30, 136, 229, 0.15);
+        }
+        
+        .detail-card h3 {
+            color: #0d47a1;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .detail-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1e88e5;
+            line-height: 1.2;
+        }
+        
+        .detail-label {
+            font-size: 15px;
+            color: #78909c;
+            margin-top: 5px;
+        }
+        
+        .wrong-questions {
+            margin-top: 50px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title {
+            color: #0d47a1;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .wrong-question-item {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 18px rgba(244, 67, 54, 0.08);
+            border: 1px solid #ffebee;
+            position: relative;
+        }
+        
+        .wrong-question-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #f44336, #e91e63);
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #263238;
+        }
+        
+        .user-answer {
+            color: #f44336;
+            margin: 8px 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .correct-answer {
+            color: #4caf50;
+            font-weight: 600;
+            margin: 8px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .explanation {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border-left: 4px solid #1e88e5;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .explanation strong {
+            color: #0d47a1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #546e7a;
+            font-size: 15px;
+            border-top: 1px solid #e3f2fd;
+            background: #f8f9fa;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .login-form {
+                padding: 30px 20px;
+            }
+            
+            .exam-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .exam-info {
+                width: 100%;
+            }
+            
+            .progress-bar {
+                max-width: 100%;
+            }
+            
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .question-number {
+                margin-bottom: 15px;
+            }
+            
+            .options {
+                padding-left: 0;
+            }
+            
+            .detail-cards {
+                gap: 15px;
+            }
+            
+            .detail-card {
+                min-width: 100%;
+            }
+        }
+        
+        /* 分享提示 */
+        .share-guide {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            border-left: 4px solid #1e88e5;
+        }
+        
+        .share-guide h3 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .share-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            background: white;
+            border: 2px solid #1e88e5;
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            background: #1e88e5;
+            color: white;
+        }
+        
+        /* 使用帮助 */
+        .help-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .help-content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close-help {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #757575;
+        }
+        
+        .help-steps {
+            margin: 20px 0;
+        }
+        
+        .help-step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #1e88e5;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-overlay"></div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>贝壳新房搏学考试系统</h1>
+                    <p>第1届新房搏学考试辅导教材</p>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div id="userName">未登录</div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- 分享指南 -->
+            <div class="share-guide">
+                <h3><i class="fas fa-share-alt"></i> 如何分享此考试系统</h3>
+                <p>将此HTML文件分享给他人后，请确保他们按以下方式打开：</p>
+                <div class="share-options">
+                    <button class="share-btn" id="copyLinkBtn">
+                        <i class="fas fa-copy"></i> 复制文件分享指南
+                    </button>
+                    <button class="share-btn" id="showHelpBtn">
+                        <i class="fas fa-question-circle"></i> 查看使用帮助
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 登录界面 -->
+            <div class="login-section active" id="loginSection">
+                <div class="login-form">
+                    <h2><i class="fas fa-key"></i> 用户登录</h2>
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> 用户名</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user-circle"></i>
+                            <input type="text" id="username" placeholder="请输入用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> 密码</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-key"></i>
+                            <input type="password" id="password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <button class="btn" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> 登录系统
+                    </button>
+                    
+                    <div class="demo-account">
+                        <p>演示账号: <strong>user123</strong> / 密码: <strong>pass123</strong></p>
+                        <p style="margin-top: 8px; color: #0d47a1; font-weight: 500;">
+                            <i class="fas fa-lightbulb"></i> 登录后可开始模拟考试
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 考试界面 -->
+            <div class="exam-section" id="examSection">
+                <div class="exam-header">
+                    <div class="exam-info">
+                        <div class="exam-title">
+                            <i class="fas fa-book-open"></i> 第1届新房搏学考试
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="progressBar" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div class="timer" id="timer">
+                        <i class="fas fa-clock"></i> 剩余时间: 60:00
+                    </div>
+                </div>
+                
+                <div id="questionArea">
+                    <!-- 题目将动态生成在这里 -->
+                </div>
+                
+                <button class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> 提交试卷
+                </button>
+            </div>
+            
+            <!-- 成绩界面 -->
+            <div class="result-section" id="resultSection">
+                <div class="result-container">
+                    <div class="score-circle">
+                        <div class="score-inner">
+                            <div class="score-value" id="scoreValue">0</div>
+                            <div class="score-text">得分</div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="result-title">考试成绩报告</h2>
+                    <p class="result-subtitle">
+                        恭喜您完成贝壳新房搏学考试！以下是您的考试成绩和详细分析报告
+                    </p>
+                    
+                    <div class="result-details">
+                        <div class="detail-cards">
+                            <div class="detail-card">
+                                <h3><i class="fas fa-file-alt"></i> 答题数</h3>
+                                <div class="detail-value" id="totalQuestions">0</div>
+                                <div class="detail-label">总题数</div>
+                            </div>
+                            <div class="detail-card">
+                                <h3><i class="fas fa-check-circle"></i> 正确数</h3>
+                                <div class="detail-value" id="correctCount">0</div>
+                                <div class="detail-label">答对题目</div>
+                            </div>
+                            <div class="detail-card">
+                                <h3><i class="fas fa-times-circle"></i> 错误数</h3>
+                                <div class="detail-value" id="wrongCount">0</div>
+                                <div class="detail-label">答错题目</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wrong-questions">
+                        <h2 class="section-title">
+                            <i class="fas fa-exclamation-triangle"></i> 错题解析
+                        </h2>
+                        <div id="wrongQuestionsList">
+                            <!-- 错题将动态生成在这里 -->
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="retryBtn" style="margin-top: 30px; width: auto; padding: 14px 40px;">
+                        <i class="fas fa-redo"></i> 重新考试
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>贝壳找房 &copy; 2025 第1届新房搏学考试辅导教材</p>
+            <p style="margin-top: 8px;">科技驱动的一站式新居住服务平台</p>
+        </footer>
+    </div>
+    
+    <!-- 使用帮助弹窗 -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-content">
+            <span class="close-help" id="closeHelp">&times;</span>
+            <h2><i class="fas fa-question-circle"></i> 使用与分享指南</h2>
+            
+            <div class="help-steps">
+                <div class="help-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>保存HTML文件</h3>
+                        <p>将此HTML文件保存到您的设备（电脑或手机）</p>
+                    </div>
+                </div>
+                
+                <div class="help-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>分享文件</h3>
+                        <p>通过以下方式分享给他人：<br>
+                        - 电脑：通过邮件、微信、QQ发送文件<br>
+                        - 手机：通过微信、QQ、钉钉发送文件</p>
+                    </div>
+                </div>
+                
+                <div class="help-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>打开方式</h3>
+                        <p>接收者需要：<br>
+                        - 电脑：双击HTML文件或在浏览器中打开<br>
+                        - 手机：在文件管理器中点击HTML文件，选择用浏览器打开</p>
+                    </div>
+                </div>
+                
+                <div class="help-step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>使用考试系统</h3>
+                        <p>使用演示账号登录：<br>
+                        <strong>用户名: user123</strong><br>
+                        <strong>密码: pass123</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" id="copyGuideBtn" style="margin-top: 10px;">
+                <i class="fas fa-copy"></i> 复制分享指南
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 题库数据
+        const questionBank = [
+            {
+                id: 1,
+                type: 'single',
+                question: '贝壳的使命是什么？',
+                options: [
+                    'A. 有尊严的服务者，更美好的居住',
+                    'B. 让家更美好',
+                    'C. 服务3亿家庭的品质居住平台',
+                    'D. 做难而正确的事'
+                ],
+                answer: 'A',
+                explanation: '根据教材P11，贝壳的使命是"有尊严的服务者，更美好的居住"。'
+            },
+            {
+                id: 2,
+                type: 'multi',
+                question: '贝壳的核心价值观包括哪些？',
+                options: [
+                    'A. 客户至上',
+                    'B. 诚实可信',
+                    'C. 合作共赢',
+                    'D. 拼搏进取',
+                    'E. 品质正循环'
+                ],
+                answer: ['A', 'B', 'C', 'D'],
+                explanation: '根据教材P11，贝壳的核心价值观包括：客户至上、诚实可信、合作共赢、拼搏进取。'
+            },
+            {
+                id: 3,
+                type: 'judge',
+                question: '格林互助的保障对象包括员工本人、配偶、子女、父母及配偶的父母。',
+                answer: true,
+                explanation: '根据教材P13，格林互助的保障对象包括本人、配偶、子女、父母及配偶的父母。'
+            },
+            {
+                id: 4,
+                type: 'single',
+                question: '房地产行业按交易客体的存续时间可分为？',
+                options: [
+                    'A. 土地市场和商品房市场',
+                    'B. 销售市场和租赁市场',
+                    'C. 增量市场和存量市场',
+                    'D. 一级市场和二级市场'
+                ],
+                answer: 'C',
+                explanation: '根据教材P20，房地产市场按交易客体的存续时间可分为增量市场和存量市场。'
+            },
+            {
+                id: 5,
+                type: 'single',
+                question: '商品房预售应具备的条件中，以下哪项不属于"五证"？',
+                options: [
+                    'A. 国有土地使用证',
+                    'B. 建设工程规划许可证',
+                    'C. 商品房预售许可证',
+                    'D. 施工进度许可证'
+                ],
+                answer: 'D',
+                explanation: '根据教材P25，商品房预售应具备"五证"包括：国有土地使用证、建设用地规划许可证、建设工程规划许可证、建筑工程施工许可证、商品房预售许可证。'
+            },
+            {
+                id: 6,
+                type: 'multi',
+                question: '贝壳新房业务流程主要包括哪些阶段？',
+                options: [
+                    'A. 拓盘',
+                    'B. 打盘',
+                    'C. 回款结佣',
+                    'D. 客户开发',
+                    'E. 广告投放'
+                ],
+                answer: ['A', 'B', 'C'],
+                explanation: '根据教材P34，新房业务主要分为拓盘、打盘、回款结佣三个阶段。'
+            },
+            {
+                id: 7,
+                type: 'single',
+                question: '新房行指（行业指数）的计算公式是？',
+                options: [
+                    'A. 贝壳月度财务成销套数/城市新房市场月度网签总套数',
+                    'B. 新房成交金额/城市总成交金额',
+                    'C. 贝壳新房销售额/开发商总销售额',
+                    'D. 渠道带看量/总带看量'
+                ],
+                answer: 'A',
+                explanation: '根据教材P77，月度新房行业指数（成销行指）=贝壳月度财务成销套数/城市新房市场月度网签总套数。'
+            },
+            {
+                id: 8,
+                type: 'judge',
+                question: '梯户比是指电梯数和每层楼住户数的比例，表达为"几梯几户"。',
+                answer: true,
+                explanation: '根据教材P30，梯户比是电梯数和每层楼住户数的比例，表达为"几梯几户"。'
+            },
+            {
+                id: 9,
+                type: 'single',
+                question: '下列哪项不属于贝壳"新房十不准"中对消费者的要求？',
+                options: [
+                    'A. 不准对消费者提供虚假信息',
+                    'B. 不准向消费者建议加杠杆金融产品',
+                    'C. 不准经手/侵占/挪用消费者资金',
+                    'D. 不准向消费者赠送礼品'
+                ],
+                answer: 'D',
+                explanation: '根据教材P17-18，贝壳员工新房十不准中对消费者的要求包括：不准提供虚假信息、不准建议加杠杆金融产品、不准经手消费者资金。'
+            },
+            {
+                id: 10,
+                type: 'multi',
+                question: '贝壳新房业务优势包括哪些？',
+                options: [
+                    'A. 平台模式优势',
+                    'B. 资源整合优势',
+                    'C. 营销服一体化运营优势',
+                    'D. 价格最低优势',
+                    'E. 独家房源优势'
+                ],
+                answer: ['A', 'B', 'C'],
+                explanation: '根据教材P35，贝壳新房业务优势包括：平台模式优势、资源整合优势、营销服一体化运营优势。'
+            },
+            {
+                id: 11,
+                type: 'single',
+                question: '2023年贝壳将战略升级为？',
+                options: [
+                    'A. 一体两翼',
+                    'B. 一体三翼',
+                    'C. 双轮驱动',
+                    'D. 平台+生态'
+                ],
+                answer: 'B',
+                explanation: '根据教材P33，2023年贝壳将战略升级为"一体三翼"。'
+            },
+            {
+                id: 12,
+                type: 'judge',
+                question: '现房销售需要提供《商品房预售许可证》。',
+                answer: false,
+                explanation: '根据教材P25，现房销售需要提供《商品房销售许可证》，预售房才需要提供《商品房预售许可证》。'
+            }
+        ];
+
+        // 当前考试相关数据
+        let currentUser = null;
+        let examQuestions = [];
+        let userAnswers = {};
+        let currentQuestionIndex = 0;
+        let timerInterval = null;
+        let timeLeft = 60 * 60; // 60分钟
+
+        // DOM 元素
+        const loginSection = document.getElementById('loginSection');
+        const examSection = document.getElementById('examSection');
+        const resultSection = document.getElementById('resultSection');
+        const questionArea = document.getElementById('questionArea');
+        const timer = document.getElementById('timer');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const progressBar = document.getElementById('progressBar');
+        const helpModal = document.getElementById('helpModal');
+        const closeHelp = document.getElementById('closeHelp');
+        const showHelpBtn = document.getElementById('showHelpBtn');
+        const copyGuideBtn = document.getElementById('copyGuideBtn');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+
+        // 登录功能
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // 简单验证
+            if (username && password) {
+                // 演示用固定账号
+                if (username === 'user123' && password === 'pass123') {
+                    currentUser = {
+                        name: username,
+                        avatar: username.charAt(0).toUpperCase()
+                    };
+                    
+                    // 更新用户信息
+                    userAvatar.textContent = currentUser.avatar;
+                    userName.textContent = currentUser.name;
+                    
+                    // 开始考试
+                    startExam();
+                } else {
+                    alert('用户名或密码错误！请使用演示账号: user123 / pass123');
+                }
+            } else {
+                alert('请输入用户名和密码');
+            }
+        });
+
+        // 开始考试
+        function startExam() {
+            // 切换界面
+            loginSection.classList.remove('active');
+            examSection.classList.add('active');
+            
+            // 随机生成试卷 (取10题作为演示)
+            examQuestions = generateRandomExam(10);
+            
+            // 初始化用户答案
+            userAnswers = {};
+            
+            // 显示第一题
+            currentQuestionIndex = 0;
+            displayQuestion(currentQuestionIndex);
+            
+            // 更新进度条
+            updateProgressBar();
+            
+            // 开始计时
+            startTimer();
+        }
+
+        // 生成随机试卷
+        function generateRandomExam(num) {
+            // 复制题库
+            const shuffled = [...questionBank];
+            
+            // 随机排序
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            // 取前num题
+            return shuffled.slice(0, num);
+        }
+
+        // 更新进度条
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / examQuestions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // 显示题目
+        function displayQuestion(index) {
+            if (index < 0 || index >= examQuestions.length) return;
+            
+            const question = examQuestions[index];
+            let optionsHtml = '';
+            
+            // 单选题和多选题
+            if (question.type === 'single' || question.type === 'multi') {
+                question.options.forEach((option, i) => {
+                    const optionLetter = option.charAt(0);
+                    const isSelected = userAnswers[question.id] && 
+                                      (question.type === 'single' ? 
+                                       userAnswers[question.id] === optionLetter : 
+                                       userAnswers[question.id].includes(optionLetter));
+                    
+                    optionsHtml += `
+                        <div class="option ${isSelected ? 'selected' : ''}" data-value="${optionLetter}">
+                            <input type="${question.type === 'single' ? 'radio' : 'checkbox'}" 
+                                   name="question_${question.id}" 
+                                   ${isSelected ? 'checked' : ''}
+                                   style="pointer-events: none;">
+                            ${option}
+                        </div>
+                    `;
+                });
+            } 
+            // 判断题
+            else if (question.type === 'judge') {
+                const isTrueSelected = userAnswers[question.id] === true;
+                const isFalseSelected = userAnswers[question.id] === false;
+                
+                optionsHtml += `
+                    <div class="option ${isTrueSelected ? 'selected' : ''}" data-value="true">
+                        <input type="radio" name="question_${question.id}" ${isTrueSelected ? 'checked' : ''} style="pointer-events: none;">
+                        正确
+                    </div>
+                    <div class="option ${isFalseSelected ? 'selected' : ''}" data-value="false">
+                        <input type="radio" name="question_${question.id}" ${isFalseSelected ? 'checked' : ''} style="pointer-events: none;">
+                        错误
+                    </div>
+                `;
+            }
+            
+            const questionHtml = `
+                <div class="question-container">
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-text">${question.question}</div>
+                    </div>
+                    <div class="options">${optionsHtml}</div>
+                </div>
+                <div class="navigation">
+                    <button class="nav-btn prev-btn" id="prevBtn" ${index === 0 ? 'disabled' : ''}>
+                        <i class="fas fa-arrow-left"></i> 上一题
+                    </button>
+                    <button class="nav-btn next-btn" id="nextBtn">
+                        ${index === examQuestions.length - 1 ? '完成预览' : '下一题'} <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+            
+            questionArea.innerHTML = questionHtml;
+            
+            // 添加选项选择事件
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectOption(question, this.dataset.value);
+                });
+            });
+            
+            // 添加上一题/下一题事件
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    displayQuestion(currentQuestionIndex);
+                    updateProgressBar();
+                }
+            });
+            
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                if (currentQuestionIndex < examQuestions.length - 1) {
+                    currentQuestionIndex++;
+                    displayQuestion(currentQuestionIndex);
+                    updateProgressBar();
+                } else {
+                    // 最后一题时显示提交确认
+                    if (confirm('您已完成所有题目，是否提交试卷？')) {
+                        submitExam();
+                    }
+                }
+            });
+        }
+
+        // 选择选项
+        function selectOption(question, value) {
+            if (question.type === 'single') {
+                userAnswers[question.id] = value;
+            } 
+            else if (question.type === 'multi') {
+                if (!userAnswers[question.id]) {
+                    userAnswers[question.id] = [];
+                }
+                
+                if (userAnswers[question.id].includes(value)) {
+                    // 已选中则取消
+                    userAnswers[question.id] = userAnswers[question.id].filter(v => v !== value);
+                } else {
+                    // 未选中则添加
+                    userAnswers[question.id].push(value);
+                }
+            } 
+            else if (question.type === 'judge') {
+                userAnswers[question.id] = value === 'true';
+            }
+            
+            // 重新渲染当前题目
+            displayQuestion(currentQuestionIndex);
+        }
+
+        // 开始计时
+        function startTimer() {
+            clearInterval(timerInterval);
+            
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                    return;
+                }
+                
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timer.textContent = `剩余时间: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // 提交试卷
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            if (confirm('确定要提交试卷吗？提交后将无法修改答案。')) {
+                submitExam();
+            }
+        });
+
+        // 提交考试
+        function submitExam() {
+            clearInterval(timerInterval);
+            
+            // 计算分数
+            const result = calculateScore();
+            
+            // 显示结果
+            showResult(result);
+        }
+
+        // 计算分数
+        function calculateScore() {
+            let correctCount = 0;
+            const wrongQuestions = [];
+            
+            examQuestions.forEach(question => {
+                const userAnswer = userAnswers[question.id];
+                let isCorrect = false;
+                
+                if (question.type === 'single') {
+                    isCorrect = userAnswer === question.answer;
+                } 
+                else if (question.type === 'multi') {
+                    // 多选题需要检查答案是否完全匹配
+                    if (Array.isArray(userAnswer)) {
+                        const sortedUser = [...userAnswer].sort().join('');
+                        const sortedAnswer = [...question.answer].sort().join('');
+                        isCorrect = sortedUser === sortedAnswer;
+                    }
+                } 
+                else if (question.type === 'judge') {
+                    isCorrect = userAnswer === question.answer;
+                }
+                
+                if (isCorrect) {
+                    correctCount++;
+                } else {
+                    wrongQuestions.push({
+                        question: question,
+                        userAnswer: userAnswer
+                    });
+                }
+            });
+            
+            const score = Math.round((correctCount / examQuestions.length) * 100);
+            
+            return {
+                total: examQuestions.length,
+                correct: correctCount,
+                wrong: examQuestions.length - correctCount,
+                score: score,
+                wrongQuestions: wrongQuestions
+            };
+        }
+
+        // 显示结果
+        function showResult(result) {
+            examSection.classList.remove('active');
+            resultSection.classList.add('active');
+            
+            // 更新结果数据
+            document.getElementById('scoreValue').textContent = result.score;
+            document.getElementById('totalQuestions').textContent = result.total;
+            document.getElementById('correctCount').textContent = result.correct;
+            document.getElementById('wrongCount').textContent = result.wrong;
+            
+            // 显示错题
+            const wrongQuestionsList = document.getElementById('wrongQuestionsList');
+            wrongQuestionsList.innerHTML = '';
+            
+            result.wrongQuestions.forEach((item, index) => {
+                const question = item.question;
+                const userAnswer = item.userAnswer;
+                
+                let correctAnswer = '';
+                if (question.type === 'single') {
+                    correctAnswer = question.answer;
+                } 
+                else if (question.type === 'multi') {
+                    correctAnswer = question.answer.join(', ');
+                } 
+                else if (question.type === 'judge') {
+                    correctAnswer = question.answer ? '正确' : '错误';
+                }
+                
+                let userAnswerDisplay = '';
+                if (userAnswer === undefined || userAnswer === null) {
+                    userAnswerDisplay = '未作答';
+                } else if (typeof userAnswer === 'boolean') {
+                    userAnswerDisplay = userAnswer ? '正确' : '错误';
+                } else if (Array.isArray(userAnswer)) {
+                    userAnswerDisplay = userAnswer.join(', ');
+                } else {
+                    userAnswerDisplay = userAnswer;
+                }
+                
+                const questionHtml = `
+                    <div class="wrong-question-item">
+                        <div class="question-text">
+                            ${index + 1}. ${question.question}
+                        </div>
+                        <div class="user-answer">
+                            <i class="fas fa-times"></i> 您的答案: ${userAnswerDisplay}
+                        </div>
+                        <div class="correct-answer">
+                            <i class="fas fa-check"></i> 正确答案: ${correctAnswer}
+                        </div>
+                        <div class="explanation">
+                            <strong>解析:</strong> ${question.explanation}
+                        </div>
+                    </div>
+                `;
+                
+                wrongQuestionsList.innerHTML += questionHtml;
+            });
+            
+            // 重新考试按钮
+            document.getElementById('retryBtn').addEventListener('click', function() {
+                // 重置考试数据
+                timeLeft = 60 * 60;
+                resultSection.classList.remove('active');
+                startExam();
+            });
+        }
+        
+        // 使用帮助功能
+        showHelpBtn.addEventListener('click', function() {
+            helpModal.style.display = 'flex';
+        });
+        
+        closeHelp.addEventListener('click', function() {
+            helpModal.style.display = 'none';
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(event) {
+            if (event.target === helpModal) {
+                helpModal.style.display = 'none';
+            }
+        });
+        
+        // 复制分享指南
+        copyGuideBtn.addEventListener('click', function() {
+            const guideText = `如何打开贝壳新房搏学考试系统：
+            
+1. 保存HTML文件到您的设备（电脑或手机）
+2. 通过以下方式打开：
+   - 电脑：双击HTML文件或在浏览器中打开
+   - 手机：在文件管理器中点击HTML文件，选择用浏览器打开
+3. 使用演示账号登录：
+   用户名: user123
+   密码: pass123
+   
+注意：如果打开后页面显示不正常，请尝试使用Chrome、Edge或Safari浏览器。`;
+
+            navigator.clipboard.writeText(guideText)
+                .then(() => {
+                    alert('分享指南已复制到剪贴板！');
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制文本');
+                });
+        });
+        
+        // 复制文件分享指南
+        copyLinkBtn.addEventListener('click', function() {
+            const guideText = `请按以下步骤使用贝壳新房搏学考试系统：
+            
+1. 将此HTML文件保存到您的设备
+2. 打开方式：
+   - 电脑：双击文件或在浏览器中打开
+   - 手机：在文件管理器中找到文件并点击，选择用浏览器打开
+3. 登录账号：
+   用户名: user123
+   密码: pass123
+   
+如果打开后页面显示不正常，请使用Chrome、Edge或Safari浏览器。`;
+
+            navigator.clipboard.writeText(guideText)
+                .then(() => {
+                    alert('文件分享指南已复制到剪贴板！');
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                    alert('复制失败，请手动复制文本');
+                });
+        });
+
+        // 页面加载时添加用户指引
+        window.addEventListener('DOMContentLoaded', function() {
+            // 添加首次使用提示
+            if (!localStorage.getItem('hasSeenGuide')) {
+                setTimeout(function() {
+                    helpModal.style.display = 'flex';
+                    localStorage.setItem('hasSeenGuide', 'true');
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
