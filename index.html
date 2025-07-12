@@ -1721,6 +1721,595 @@
         ],
         answer: 'B',
         explanation: '教材P1：2001年11月12日，链家在北京成立'
+    },
+    {
+        id: 1,
+        type: 'single',
+        question: '贝壳的第一性原理是什么？',
+        options: [
+            'A. 客户至上',
+            'B. 坚持做难而正确的事',
+            'C. 合作共赢',
+            'D. 技术驱动'
+        ],
+        answer: 'B',
+        explanation: '教材P9明确：贝壳的第一性原理是"坚持做难而正确的事"'
+    },
+    {
+        id: 2,
+        type: 'multi',
+        question: '贝壳核心价值观包含哪些？',
+        options: [
+            'A. 客户至上',
+            'B. 诚实可信',
+            'C. 合作共赢',
+            'D. 拼搏进取'
+        ],
+        answer: ['A', 'B', 'C', 'D'],
+        explanation: '教材P9：核心价值观包括客户至上、诚实可信、合作共赢、拼搏进取'
+    },
+    {
+        id: 3,
+        type: 'judge',
+        question: '贝壳的愿景是"服务3亿家庭的品质居住平台"。',
+        answer: true,
+        explanation: '教材P9明确记载贝壳愿景'
+    },
+    
+    // 职业道德与合规
+    {
+        id: 4,
+        type: 'single',
+        question: '员工PS修改成销确认单印章属于哪类违规？',
+        options: [
+            'A. 行为不诚信',
+            'B. 侵占公司资产',
+            'C. 泄露机密',
+            'D. 公款私存'
+        ],
+        answer: 'A',
+        explanation: '教材P10案例：PS修改成销确认单构成"行为不诚信"'
+    },
+    {
+        id: 5,
+        type: 'single',
+        question: '向公职人员赠送礼品的价值上限是多少？',
+        options: [
+            'A. 100元',
+            'B. 300元',
+            'C. 500元',
+            'D. 1000元'
+        ],
+        answer: 'B',
+        explanation: '教材P11规定：向公职人员赠送礼品价值须≤300元'
+    },
+    {
+        id: 6,
+        type: 'multi',
+        question: '哪些行为构成一级违规？',
+        options: [
+            'A. 侵占公司资产',
+            'B. 泄露公司机密',
+            'C. 未及时申报利益关系',
+            'D. 被追究刑事责任'
+        ],
+        answer: ['A', 'B', 'D'],
+        explanation: '教材P10-11：侵占资产、泄露机密及被追究刑事责任均属一级违规'
+    },
+    
+    // 格林互助
+    {
+        id: 7,
+        type: 'single',
+        question: '格林互助每月交费金额是多少？',
+        options: [
+            'A. 20元',
+            'B. 40元',
+            'C. 60元',
+            'D. 100元'
+        ],
+        answer: 'B',
+        explanation: '教材P12：格林互助每月交费标准为40元/月'
+    },
+    {
+        id: 8,
+        type: 'judge',
+        question: '格林互助保障对象包括配偶的父母。',
+        answer: true,
+        explanation: '教材P12：保障对象明确包含"父母及配偶的父母"'
+    },
+    
+    // 数据安全
+    {
+        id: 9,
+        type: 'single',
+        question: 'C4级数据的含义是什么？',
+        options: [
+            'A. 完全公开数据',
+            'B. 内部使用数据',
+            'C. 商业秘密',
+            'D. 公司机密'
+        ],
+        answer: 'D',
+        explanation: '教材P13数据分级表：C4级为公司机密数据'
+    },
+    {
+        id: 10,
+        type: 'multi',
+        question: '数据保护要求包括？',
+        options: [
+            'A. C3/C4数据严禁存本地',
+            'B. 跨部门用数据需申请',
+            'C. C2数据可随意传输',
+            'D. 纸质文档直接丢弃'
+        ],
+        answer: ['A', 'B'],
+        explanation: '教材P13规定：C3/C4禁存本地，跨部门用数据需申请流程'
+    },
+    
+    // 新房十不准
+    {
+        id: 11,
+        type: 'single',
+        question: '以下哪项违反"对消费者"十不准？',
+        options: [
+            'A. 提供真实价格信息',
+            'B. 建议加杠杆金融产品',
+            'C. 不收前置佣金',
+            'D. 资金托管'
+        ],
+        answer: 'B',
+        explanation: '教材P14：不准向消费者建议加杠杆金融产品'
+    },
+    {
+        id: 12,
+        type: 'judge',
+        question: '经纪人可私下收取客户前置佣金。',
+        answer: false,
+        explanation: '教材P14：十不准明确规定"不得收取消费者任何形式的前置佣金"'
+    },
+    
+    // 更多题目（完整50道）
+    {
+        id: 13,
+        type: 'single',
+        question: '家贝守护计划中，重大疾病应急借款额度是多少？',
+        options: [
+            'A. 1-5万元',
+            'B. 5-10万元',
+            'C. 10-20万元',
+            'D. 20-30万元'
+        ],
+        answer: 'C',
+        explanation: '教材P12：一次性借款10万~20万元'
+    },
+    {
+        id: 14,
+        type: 'multi',
+        question: '贝壳公益主要项目包括？',
+        options: [
+            'A. 门店便民',
+            'B. 城市社区助老',
+            'C. 乡村教育振兴',
+            'D. 商业投资'
+        ],
+        answer: ['A', 'B', 'C'],
+        explanation: '教材P11：公益矩阵包含门店便民、城市社区、乡村教育振兴'
+    },
+    {
+        id: 15,
+        type: 'judge',
+        question: '七面旗帜中的"技术驱动"最初是"科学管理"。',
+        answer: true,
+        explanation: '教材P10：技术驱动旗帜最初是科学管理'
+    },
+    {
+        id: 16,
+        type: 'single',
+        question: '员工收受合作方购物卡应如何处理？',
+        options: [
+            'A. 自行保留',
+            'B. 2个工作日报备',
+            'C. 转赠他人',
+            'D. 折算现金'
+        ],
+        answer: 'B',
+        explanation: '教材P12：非当面礼品须2个工作日内上交报备'
+    },
+    {
+        id: 17,
+        type: 'multi',
+        question: '哪些行为违反"对开发商"十不准？',
+        options: [
+            'A. 合作五证不全项目',
+            'B. 内导外切客行为',
+            'C. 提供真实销售数据',
+            'D. 拒收开发商礼品'
+        ],
+        answer: ['A', 'B'],
+        explanation: '教材P15：不准合作违规项目，严禁洗客切客行为'
+    },
+    {
+        id: 18,
+        type: 'single',
+        question: '利益关系发生变化需在多少天内申报？',
+        options: [
+            'A. 当日',
+            'B. 3个自然日',
+            'C. 5工作日',
+            'D. 7天'
+        ],
+        answer: 'B',
+        explanation: '教材P13：利益关系变化需知悉后3个自然日内申报'
+    },
+    {
+        id: 19,
+        type: 'judge',
+        question: '公款私存属于二级违规行为。',
+        answer: true,
+        explanation: '教材P11：公款私存明确列为二级违规行为'
+    },
+    {
+        id: 20,
+        type: 'single',
+        question: '宴请公职人员人均标准上限是？',
+        options: [
+            'A. 200元',
+            'B. 350元',
+            'C. 500元',
+            'D. 800元'
+        ],
+        answer: 'B',
+        explanation: '教材P11：宴请公职人员人均花费须≤350元'
+    },
+    // 第21-50题
+    {
+        id: 21,
+        type: 'multi',
+        question: '客户至上的行为准则包括：',
+        options: [
+            'A. 尊重客户及时响应',
+            'B. 履行服务承诺',
+            'C. 优先保证客户利益',
+            'D. 用专业赢得信任'
+        ],
+        answer: ['A', 'B', 'C', 'D'],
+        explanation: '教材P9：客户至上五项行为准则'
+    },
+    {
+        id: 22,
+        type: 'single',
+        question: '格林互助累计救助金额已达？',
+        options: [
+            'A. 1亿元',
+            'B. 3.5亿元',
+            'C. 6.7亿元',
+            'D. 10亿元'
+        ],
+        answer: 'C',
+        explanation: '教材P12：截至2025年4月总救助金额超6.7亿元'
+    },
+    {
+        id: 23,
+        type: 'judge',
+        question: '员工可私下存储C4级数据到个人电脑。',
+        answer: false,
+        explanation: '教材P13：C3/C4级数据严禁存放本地设备'
+    },
+    {
+        id: 24,
+        type: 'single',
+        question: '贝壳公益聚焦的核心领域是？',
+        options: [
+            'A. 国际援助',
+            'B. 政治捐助',
+            'C. 社区议题',
+            'D. 商业投资'
+        ],
+        answer: 'C',
+        explanation: '教材P11：贝壳公益聚焦社区议题'
+    },
+    {
+        id: 25,
+        type: 'multi',
+        question: '管理人员责任追究情形包括：',
+        options: [
+            'A. 员工涉嫌犯罪',
+            'B. 发生重大案件',
+            'C. 主动上报案件',
+            'D. 减少公司损失'
+        ],
+        answer: ['A', 'B'],
+        explanation: '教材P11：员工涉罪或重大案件追究管理责任'
+    },
+    {
+        id: 26,
+        type: 'single',
+        question: '子女教育基金最高补助标准是？',
+        options: [
+            'A. 5000元/年',
+            'B. 9000元/年',
+            'C. 15000元/年',
+            'D. 20000元/年'
+        ],
+        answer: 'C',
+        explanation: '教材P12：根据不同就学阶段发放9000~15000元/年'
+    },
+    {
+        id: 27,
+        type: 'judge',
+        question: '七面旗帜中的"社区友好"是贝壳的社会责任。',
+        answer: true,
+        explanation: '教材P10：社区友好既是经营方式也是社会责任'
+    },
+    {
+        id: 28,
+        type: 'single',
+        question: '未申报利益关系但无冲突的处罚等级是？',
+        options: [
+            'A. 一级',
+            'B. 二级',
+            'C. 三级',
+            'D. 四级'
+        ],
+        answer: 'D',
+        explanation: '教材P13：未申报但不构成冲突予以四级违规处罚'
+    },
+    {
+        id: 29,
+        type: 'multi',
+        question: '合作共赢的行为准则要求：',
+        options: [
+            'A. 尊重规则',
+            'B. 换位思考',
+            'C. 荣誉面前退一步',
+            'D. 牺牲短期利益'
+        ],
+        answer: ['A', 'B', 'C', 'D'],
+        explanation: '教材P9-10：合作共赢五项行为准则'
+    },
+    {
+        id: 30,
+        type: 'single',
+        question: '数据分类中的"三类"不包括？',
+        options: [
+            'A. 个人信息',
+            'B. 政府数据',
+            'C. 公司管理数据',
+            'D. 业务经营数据'
+        ],
+        answer: 'B',
+        explanation: '教材P13：三类数据为个人信息、公司管理数据、业务经营数据'
+    },
+    {
+        id: 31,
+        type: 'judge',
+        question: '员工可共享系统账号密码。',
+        answer: false,
+        explanation: '教材P13：禁止共享账号，员工对账号行为负责'
+    },
+    {
+        id: 32,
+        type: 'single',
+        question: '格林互助救助人次已超过？',
+        options: [
+            'A. 1万',
+            'B. 2.5万',
+            'C. 4.8万',
+            'D. 6万'
+        ],
+        answer: 'C',
+        explanation: '教材P12：截至2025年4月救助超4.8万人次'
+    },
+    {
+        id: 33,
+        type: 'multi',
+        question: '新房十不准"对公司"禁止：',
+        options: [
+            'A. 接私单',
+            'B. 利用资源不当获利',
+            'C. 瞒报利益关系',
+            'D. 提供真实发票'
+        ],
+        answer: ['A', 'B', 'C'],
+        explanation: '教材P15：不准接私单、不当获利、瞒报利益关系'
+    },
+    {
+        id: 34,
+        type: 'single',
+        question: '泄露客户带看信息属于？',
+        options: [
+            'A. 行为不诚信',
+            'B. 泄露公司机密',
+            'C. 侵占资产',
+            'D. 索贿'
+        ],
+        answer: 'B',
+        explanation: '教材P11案例：倒卖客户信息构成泄露公司机密'
+    },
+    {
+        id: 35,
+        type: 'judge',
+        question: "家贝守护计划覆盖员工'前任配偶'。",
+        answer: false,
+        explanation: '教材P12：仅覆盖员工、子女、配偶'
+    },
+    {
+        id: 36,
+        type: 'single',
+        question: '七面旗帜不包括：',
+        options: [
+            'A. 品质正循环',
+            'B. 服务者主权',
+            'C. 个人英雄主义',
+            'D. 社区友好'
+        ],
+        answer: 'C',
+        explanation: '教材P10：七面旗帜强调"平凡人协作"而非个人英雄主义'
+    },
+    {
+        id: 37,
+        type: 'multi',
+        question: '申报利益关系的情形包括：',
+        options: [
+            'A. 入职申报',
+            'B. 定期申报',
+            'C. 实时申报',
+            'D. 离职申报'
+        ],
+        answer: ['A', 'B', 'C'],
+        explanation: '教材P13：申报分入职、定期、实时三种'
+    },
+    {
+        id: 38,
+        type: 'single',
+        question: '员工伪造成交条件属于违反：',
+        options: [
+            'A. 对经纪人十不准',
+            'B. 对开发商十不准',
+            'C. 对公司十不准',
+            'D. 对消费者十不准'
+        ],
+        answer: 'A',
+        explanation: '教材P14：不准引导经纪人伪造成交条件'
+    },
+    {
+        id: 39,
+        type: 'judge',
+        question: '格林互助保障期内累计救助上限200万元。',
+        answer: true,
+        explanation: '教材P12：会员保障期内累计救助上限200万元'
+    },
+    {
+        id: 40,
+        type: 'single',
+        question: '数据销毁的正确方式是？',
+        options: [
+            'A. 直接丢弃',
+            'B. 碎纸机处理',
+            'C. 转赠他人',
+            'D. 私下留存'
+        ],
+        answer: 'B',
+        explanation: '教材P13：纸质文档必须用碎纸机处理'
+    },
+    {
+        id: 41,
+        type: 'multi',
+        question: '诚实可信的行为准则要求：',
+        options: [
+            'A. 言行一致',
+            'B. 不粉饰成绩',
+            'C. 敬畏规则',
+            'D. 勇于担当'
+        ],
+        answer: ['A', 'B', 'C', 'D'],
+        explanation: '教材P9-10：诚实可信五项行为准则'
+    },
+    {
+        id: 42,
+        type: 'single',
+        question: "贝壳公益'我来教您用手机'属于？",
+        options: [
+            'A. 门店便民',
+            'B. 乡村教育',
+            'C. 城市社区助老',
+            'D. 产业振兴'
+        ],
+        answer: 'C',
+        explanation: '教材P11：属于城市社区助老项目'
+    },
+    {
+        id: 43,
+        type: 'judge',
+        question: '员工可私下接受合作方提供的旅游招待。',
+        answer: false,
+        explanation: '教材P12：禁止接受旅游款待等不适度接待'
+    },
+    {
+        id: 44,
+        type: 'single',
+        question: '三级违规的职位晋升限制期是？',
+        options: [
+            'A. 3个月',
+            'B. 6个月',
+            'C. 1年',
+            'D. 2年'
+        ],
+        answer: 'C',
+        explanation: '教材P10表格：三级违规一年内不得晋升'
+    },
+    {
+        id: 45,
+        type: 'multi',
+        question: '家贝守护计划包含：',
+        options: [
+            'A. 重疾应急借款',
+            'B. 子女教育基金',
+            'C. 退休年金',
+            'D. 购房补贴'
+        ],
+        answer: ['A', 'B'],
+        explanation: '教材P12：包含重大疾病应急借款和子女教育基金'
+    },
+    {
+        id: 46,
+        type: 'single',
+        question: '七面旗帜中"信任连接"的本质是？',
+        options: [
+            'A. 利用信息差赚钱',
+            'B. 帮助信息对称',
+            'C. 加速交易流程',
+            'D. 降低服务标准'
+        ],
+        answer: 'B',
+        explanation: '教材P10：帮助客户实现信息对称而非利用信息差'
+    },
+    {
+        id: 47,
+        type: 'judge',
+        question: '新房作业人员可参与零首付项目合作。',
+        answer: false,
+        explanation: '教材P15：严禁合作存在骗贷风险的零低首付项目'
+    },
+    {
+        id: 48,
+        type: 'single',
+        question: '贝好家的核心业务模式是？',
+        options: [
+            'A. 1+2模式',
+            'B. 3C模式',
+            'C. 4P模式',
+            'D. 5S体系'
+        ],
+        answer: 'A',
+        explanation: '教材P9：贝好家采用"1+2业务模式"'
+    },
+    {
+        id: 49,
+        type: 'multi',
+        question: '对外宴请合规要求：',
+        options: [
+            'A. 公司人员必须参加',
+            'B. 禁止娱乐类消费',
+            'C. 可洗浴按摩',
+            'D. 人均无限制'
+        ],
+        answer: ['A', 'B'],
+        explanation: '教材P11：宴请须有公司人员参加且禁止娱乐消费'
+    },
+    {
+        id: 50,
+        type: 'single',
+        question: '格林互助入会需入职满？',
+        options: [
+            'A. 1个月',
+            'B. 3个月',
+            'C. 6个月',
+            'D. 12个月'
+        ],
+        answer: 'C',
+        explanation: '教材P12：需入驻贝壳6个月以上才可加入'
     }
         ];
 
