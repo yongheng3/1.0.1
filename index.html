@@ -697,112 +697,6 @@
                 min-width: 100%;
             }
         }
-        
-        /* 分享提示 */
-        .share-guide {
-            background: #e3f2fd;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px auto;
-            max-width: 600px;
-            text-align: center;
-            border-left: 4px solid #1e88e5;
-        }
-        
-        .share-guide h3 {
-            color: #0d47a1;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .share-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .share-btn {
-            background: white;
-            border: 2px solid #1e88e5;
-            border-radius: 8px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .share-btn:hover {
-            background: #1e88e5;
-            color: white;
-        }
-        
-        /* 使用帮助 */
-        .help-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .help-content {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-        }
-        
-        .close-help {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #757575;
-        }
-        
-        .help-steps {
-            margin: 20px 0;
-        }
-        
-        .help-step {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-        
-        .step-number {
-            background: #1e88e5;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
         <header>
             <div class="header-overlay"></div>
             <div class="logo">
@@ -820,25 +714,7 @@
                 </div>
                 <div id="userName">未登录</div>
             </div>
-        </header>
-        
-        <div class="content">
-            <!-- 分享指南 -->
-            <div class="share-guide">
-                <h3><i class="fas fa-share-alt"></i> 如何分享此考试系统</h3>
-                <p>将此HTML文件分享给他人后，请确保他们按以下方式打开：</p>
-                <div class="share-options">
-                    <button class="share-btn" id="copyLinkBtn">
-                        <i class="fas fa-copy"></i> 复制文件分享指南
-                    </button>
-                    <button class="share-btn" id="showHelpBtn">
-                        <i class="fas fa-question-circle"></i> 查看使用帮助
-                    </button>
-                </div>
-            </div>
-            
             <!-- 登录界面 -->
-            <div class="login-section active" id="loginSection">
                 <div class="login-form">
                     <h2><i class="fas fa-key"></i> 用户登录</h2>
                     <div class="form-group">
@@ -866,13 +742,12 @@
                         </p>
                     </div>
                 </div>
-            </div>
-                     <div class="disclaimer">
+
                  <p><i class="fas fa-exclamation-triangle"></i> 免责声明：本考试系统由孙永恒免费提供培训使用，题目及答案来源于《第1届新房搏学考试辅导教材》。系统内所有内容仅供学习参考，不构成任何业务建议。使用本系统即表示您同意仅用于个人学习目的。</p>
-             </div>
+
             
             <!-- 考试界面 -->
-            <div class="exam-section" id="examSection">
+
                 <div class="exam-header">
                     <div class="exam-info">
                         <div class="exam-title">
@@ -894,10 +769,10 @@
                 <button class="submit-btn" id="submitBtn">
                     <i class="fas fa-paper-plane"></i> 提交试卷
                 </button>
-            </div>
+
             
             <!-- 成绩界面 -->
-            <div class="result-section" id="resultSection">
+
                 <div class="result-container">
                     <div class="score-circle">
                         <div class="score-inner">
@@ -944,68 +819,12 @@
                         <i class="fas fa-redo"></i> 重新考试
                     </button>
                 </div>
-            </div>
-        </div>
-        
-        <footer>
+
             <p>贝壳找房 &copy; 2025 第1届新房搏学考试辅导教材</p>
             <p style="margin-top: 8px;">科技驱动的一站式新居住服务平台</p>
-        </footer>
-    </div>
-    
-    <!-- 使用帮助弹窗 -->
-    <div class="help-modal" id="helpModal">
-        <div class="help-content">
-            <span class="close-help" id="closeHelp">&times;</span>
-            <h2><i class="fas fa-question-circle"></i> 使用与分享指南</h2>
-            
-            <div class="help-steps">
-                <div class="help-step">
-                    <div class="step-number">1</div>
-                    <div>
-                        <h3>保存HTML文件</h3>
-                        <p>将此HTML文件保存到您的设备（电脑或手机）</p>
-                    </div>
-                </div>
-                
-                <div class="help-step">
-                    <div class="step-number">2</div>
-                    <div>
-                        <h3>分享文件</h3>
-                        <p>通过以下方式分享给他人：<br>
-                        - 电脑：通过邮件、微信、QQ发送文件<br>
-                        - 手机：通过微信、QQ、钉钉发送文件</p>
-                    </div>
-                </div>
-                
-                <div class="help-step">
-                    <div class="step-number">3</div>
-                    <div>
-                        <h3>打开方式</h3>
-                        <p>接收者需要：<br>
-                        - 电脑：双击HTML文件或在浏览器中打开<br>
-                        - 手机：在文件管理器中点击HTML文件，选择用浏览器打开</p>
-                    </div>
-                </div>
-                
-                <div class="help-step">
-                    <div class="step-number">4</div>
-                    <div>
-                        <h3>使用考试系统</h3>
-                        <p>使用演示账号登录：<br>
-                        <strong>用户名: syh</strong><br>
-                        <strong>密码: 123</strong></p>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="btn" id="copyGuideBtn" style="margin-top: 10px;">
-                <i class="fas fa-copy"></i> 复制分享指南
-            </button>
-        </div>
-    </div>
 
-    <script>
+    
+
         // 题库数据
         const questionBank = [
             {
@@ -2899,7 +2718,630 @@
         question: '教育用地的最高出让年限是40年。',
         answer: false,
         explanation: '教材P21：教育、科技、文化、卫生、体育用地50年'
-    }
+    },
+    {
+        id: 162,
+        type: 'single',
+        question: '房源必须满足的条件是（ ）',
+        options: [
+            'A. 房屋装修豪华',
+            'B. 房屋权利人有出售意愿并委托',
+            'C. 位于市中心',
+            'D. 面积超过100㎡'
+        ],
+        answer: 'B',
+        explanation: '教材P25明确房源需具备"依法可交易"和"权利人委托出售"两个条件'
+    },
+    {
+        id: 163,
+        type: 'single',
+        question: '新房房源权利人通常是（ ）',
+        options: [
+            'A. 个人业主',
+            'B. 开发商',
+            'C. 政府',
+            'D. 物业公司'
+        ],
+        answer: 'B',
+        explanation: 'P25指出"新房房源权利人通常为开发商"'
+    },
+    {
+        id: 164,
+        type: 'single',
+        question: '以下属于房源交互信息的是（ ）',
+        options: [
+            'A. 房屋朝向',
+            'B. 挂牌价格',
+            'C. 带看量',
+            'D. 建筑结构'
+        ],
+        answer: 'C',
+        explanation: 'P26房源交互信息包括浏览量、带看量等市场反馈数据'
+    },
+    {
+        id: 165,
+        type: 'single',
+        question: '房龄的计算起点是（ ）',
+        options: [
+            'A. 房屋购买日期',
+            'B. 房屋交付日期',
+            'C. 房屋竣工日期',
+            'D. 首次交易日期'
+        ],
+        answer: 'C',
+        explanation: 'P27明确"房龄自房屋竣工之日起计算，即便房屋空置也算入房龄"'
+    },
+    {
+        id: 166,
+        type: 'single',
+        question: '根据《住宅建筑规范》，住宅设计使用年限不应少于（ ）',
+        options: [
+            'A. 30年',
+            'B. 40年',
+            'C. 50年',
+            'D. 70年'
+        ],
+        answer: 'C',
+        explanation: 'P27规定"住宅的设计使用年限不应少于50年"'
+    },
+    {
+        id: 167,
+        type: 'single',
+        question: '地上建筑高度超过100米的住宅属于（ ）',
+        options: [
+            'A. 低层住宅',
+            'B. 多层住宅',
+            'C. 高层住宅',
+            'D. 超高层住宅'
+        ],
+        answer: 'D',
+        explanation: 'P27依据《民用建筑设计统一标准》分类：超过100米为超高层住宅'
+    },
+    {
+        id: 168,
+        type: 'single',
+        question: '板式住宅的主要缺点是（ ）',
+        options: [
+            'A. 通风采光差',
+            'B. 户型格局不宜改造',
+            'C. 建筑密度大',
+            'D. 得房率低'
+        ],
+        answer: 'B',
+        explanation: 'P28指出板楼"缺点是户型格局不宜改造"，塔楼缺点是通风采光差'
+    },
+    {
+        id: 169,
+        type: 'single',
+        question: '套内使用面积是指（ ）',
+        options: [
+            'A. 套内建筑面积+公摊面积',
+            'B. 房屋户内实际使用面积',
+            'C. 套内墙体面积+阳台面积',
+            'D. 建筑面积-公摊面积'
+        ],
+        answer: 'B',
+        explanation: 'P29定义"套内使用面积是指房屋户内实际使用的面积"'
+    },
+    {
+        id: 170,
+        type: 'single',
+        question: '依据2025年《住宅项目规范》，新建住宅层高不应低于（ ）',
+        options: [
+            'A. 2.5米',
+            'B. 2.8米',
+            'C. 3.0米',
+            'D. 3.2米'
+        ],
+        answer: 'C',
+        explanation: 'P30规定"新建住宅建筑的层高不应低于3米"'
+    },
+    {
+        id: 171,
+        type: 'single',
+        question: '得房率的计算公式是（ ）',
+        options: [
+            'A. 套内使用面积÷建筑面积×100%',
+            'B. 套内建筑面积÷建筑面积×100%',
+            'C. 使用面积÷建筑面积×100%',
+            'D. 建筑面积÷用地面积×100%'
+        ],
+        answer: 'A',
+        explanation: 'P30明确"得房率=套内使用面积÷建筑面积×100%"'
+    },
+
+    // 172-181：房屋分类
+    {
+        id: 172,
+        type: 'single',
+        question: '房龄超过30年的存量住宅称为（ ）',
+        options: [
+            'A. 次新住房',
+            'B. 旧住房',
+            'C. 老旧住房',
+            'D. 危房'
+        ],
+        answer: 'C',
+        explanation: 'P27定义"房龄很长（一般超过30年）的称为老旧住房"'
+    },
+    {
+        id: 173,
+        type: 'single',
+        question: '下列哪项是塔式住宅的特点？',
+        options: [
+            'A. 进深小面宽大',
+            'B. 通风采光较好',
+            'C. 空间格局灵活',
+            'D. 得房率较高'
+        ],
+        answer: 'C',
+        explanation: 'P28指出塔楼"主要优点是空间格局灵活"'
+    },
+    {
+        id: 174,
+        type: 'single',
+        question: '套内空间跨越两个自然楼层的住宅类型是（ ）',
+        options: [
+            'A. 平层住宅',
+            'B. 错层住宅',
+            'C. 复式住宅',
+            'D. 跃层住宅'
+        ],
+        answer: 'D',
+        explanation: 'P29定义跃层住宅为"套内空间跨越两个自然楼层，设内部楼梯连接"'
+    },
+    {
+        id: 175,
+        type: 'single',
+        question: '叠拼别墅的高度通常是（ ）',
+        options: [
+            'A. 2层',
+            'B. 3层',
+            'C. 4层或4层半',
+            'D. 5层以上'
+        ],
+        answer: 'C',
+        explanation: 'P29描述叠拼别墅"高度为四层或四层半"'
+    },
+    {
+        id: 176,
+        type: 'single',
+        question: '住宅底商不能经营的业态是（ ）',
+        options: [
+            'A. 便利店',
+            'B. 服装店',
+            'C. 餐饮（明火）',
+            'D. 美容院'
+        ],
+        answer: 'C',
+        explanation: 'P30规定"住宅底商不能经营餐饮（明火）、娱乐等商业业态"'
+    },
+    {
+        id: 177,
+        type: 'multi',
+        question: '房源信息包含哪些方面？',
+        options: [
+            'A. 房源区位信息',
+            'B. 房源实物信息',
+            'C. 房源权益信息',
+            'D. 房源交易条件信息',
+            'E. 房源交互信息'
+        ],
+        answer: ['A','B','C','D','E'],
+        explanation: 'P26将房源信息细分为区位、实物、权益、交易条件、交互信息5个方面'
+    },
+    {
+        id: 178,
+        type: 'multi',
+        question: '低楼层住宅的优点包括（ ）',
+        options: [
+            'A. 采光好',
+            'B. 出入方便',
+            'C. 灰尘少',
+            'D. 不太担心电梯故障',
+            'E. 灾害易逃生'
+        ],
+        answer: ['B','D','E'],
+        explanation: 'P27指出低楼层优点是出入方便、不太担心电梯故障、灾害发生时易逃生'
+    },
+    {
+        id: 179,
+        type: 'multi',
+        question: '别墅按建筑形式分类包括（ ）',
+        options: [
+            'A. 独栋别墅',
+            'B. 双拼别墅',
+            'C. 联排别墅',
+            'D. 叠拼别墅',
+            'E. 空中别墅'
+        ],
+        answer: ['A','B','C','D'],
+        explanation: 'P29分类：独栋、双拼、联排、叠拼别墅'
+    },
+    {
+        id: 180,
+        type: 'multi',
+        question: '商业地产类型包括（ ）',
+        options: [
+            'A. 独立式商业',
+            'B. 商业街',
+            'C. 底商',
+            'D. 公寓',
+            'E. 写字楼'
+        ],
+        answer: ['A','B','C','D'],
+        explanation: 'P30主要商业地产类型：独立式商业、商业街、底商、公寓'
+    },
+    {
+        id: 181,
+        type: 'judge',
+        question: '露台计入房屋建筑面积',
+        answer: false,
+        explanation: 'P29小贴士明确指出"露台不计入建筑面积"'
+    },
+
+    // 182-191：房屋评价维度
+    {
+        id: 182,
+        type: 'single',
+        question: '套内墙体面积计算规则中，套间分隔墙按（ ）计算',
+        options: [
+            'A. 全部投影面积',
+            'B. 一半投影面积',
+            'C. 不计算',
+            'D. 按墙体厚度计算'
+        ],
+        answer: 'B',
+        explanation: 'P29规定"各套房屋之间的分隔墙按照水平投影面积的一半计算"'
+    },
+    {
+        id: 183,
+        type: 'single',
+        question: '未封闭阳台的建筑面积计算规则是（ ）',
+        options: [
+            'A. 按全部投影面积计算',
+            'B. 按一半投影面积计算',
+            'C. 不计入建筑面积',
+            'D. 按阳台进深计算'
+        ],
+        answer: 'B',
+        explanation: 'P29规定"未封闭阳台按外围水平投影面积的一半计算建筑面积"'
+    },
+    {
+        id: 184,
+        type: 'single',
+        question: '下列哪项不计入公摊面积？',
+        options: [
+            'A. 公共门厅',
+            'B. 电梯间',
+            'C. 人防地下室',
+            'D. 楼梯间'
+        ],
+        answer: 'C',
+        explanation: 'P29明确"作为人防工程的地下室不计入公摊面积"'
+    },
+    {
+        id: 185,
+        type: 'single',
+        question: '住宅的布置以满足（ ）要求作为确定建筑间距的主要依据',
+        options: [
+            'A. 消防',
+            'B. 日照',
+            'C. 通风',
+            'D. 视野'
+        ],
+        answer: 'B',
+        explanation: 'P31指出"住宅的布置通常以满足日照要求作为确定建筑间距的主要依据"'
+    },
+    {
+        id: 186,
+        type: 'single',
+        question: '梯户比"两梯四户"表示（ ）',
+        options: [
+            'A. 2栋楼4部电梯',
+            'B. 每层2部电梯4户人家',
+            'C. 2个单元4部电梯',
+            'D. 每栋2部电梯4个单元'
+        ],
+        answer: 'B',
+        explanation: 'P31定义梯户比是"电梯数和每层楼住户数的比例"，表达为"几梯几户"'
+    },
+    {
+        id: 187,
+        type: 'single',
+        question: '容积率的计算公式是（ ）',
+        options: [
+            'A. 建筑面积÷用地面积',
+            'B. 绿地面积÷用地面积',
+            'C. 建筑基底面积÷用地面积',
+            'D. 套内面积÷建筑面积'
+        ],
+        answer: 'A',
+        explanation: 'P31明确"容积率=建筑总面积÷用地总面积"'
+    },
+    {
+        id: 188,
+        type: 'single',
+        question: '对住宅使用人来说，下列哪个指标越小越好？',
+        options: [
+            'A. 绿地率',
+            'B. 绿化率',
+            'C. 建筑密度',
+            'D. 车位配比'
+        ],
+        answer: 'C',
+        explanation: 'P31指出"建筑密度越小越好"，而绿地率/绿化率越大越好'
+    },
+    {
+        id: 189,
+        type: 'single',
+        question: '车位配比"1:X"中，X表示（ ）',
+        options: [
+            'A. 住户数量',
+            'B. 车位数量',
+            'C. 车位与住户的比例',
+            'D. 车位价格'
+        ],
+        answer: 'B',
+        explanation: 'P32说明"车户比指小区总户数和总车位数的比例"，X越大表示车位越多'
+    },
+    {
+        id: 190,
+        type: 'multi',
+        question: '嫌恶设施包括（ ）',
+        options: [
+            'A. 垃圾站',
+            'B. 变电站',
+            'C. 公园',
+            'D. 火葬场',
+            'E. 学校'
+        ],
+        answer: ['A','B','D'],
+        explanation: 'P32列举嫌恶设施如垃圾站、变电站、火葬场等'
+    },
+    {
+        id: 191,
+        type: 'judge',
+        question: '同一社区的绿化率通常高于绿地率',
+        answer: true,
+        explanation: 'P31说明"由于树的影子也被认为绿化覆盖面积，所以同一社区的绿化率高于绿地率"'
+    },
+
+    // 192-201：贝壳新房业务
+    {
+        id: 192,
+        type: 'single',
+        question: '贝壳新房独立发展始于（ ）',
+        options: [
+            'A. 2014年',
+            'B. 2016年',
+            'C. 2018年',
+            'D. 2020年'
+        ],
+        answer: 'C',
+        explanation: 'P33：2018年4月贝壳新房开启平台化运营'
+    },
+    {
+        id: 193,
+        type: 'single',
+        question: '贝壳"一体三翼"战略新增的事业线是（ ）',
+        options: [
+            'A. 贝壳租房',
+            'B. 贝壳家装',
+            'C. 贝好家',
+            'D. 贝壳优选'
+        ],
+        answer: 'C',
+        explanation: 'P33：2023年贝壳启动"一体三翼"战略升级，新增贝好家事业线'
+    },
+    {
+        id: 194,
+        type: 'single',
+        question: '新房业务流程的起点是（ ）',
+        options: [
+            'A. 拓盘',
+            'B. 打盘',
+            'C. 回款结佣',
+            'D. 渠道联动'
+        ],
+        answer: 'A',
+        explanation: 'P34明确"拓盘是新房业务的起点"'
+    },
+    {
+        id: 195,
+        type: 'single',
+        question: '贝壳新房战略洞察方法论是（ ）',
+        options: [
+            'A. 三看两定',
+            'B. 四看一定',
+            'C. 五看三定',
+            'D. 六看四定'
+        ],
+        answer: 'C',
+        explanation: 'P34提出"五看三定"战略方法论'
+    },
+    {
+        id: 196,
+        type: 'single',
+        question: '新房作业原则中，优先级最高的是（ ）',
+        options: [
+            'A. 渠道>盘源',
+            'B. 回款>费率',
+            'C. 合作>分工',
+            'D. 安全>合作'
+        ],
+        answer: 'D',
+        explanation: 'P35新房策略优先级为"安全>合作，商务>费率"'
+    },
+    {
+        id: 197,
+        type: 'single',
+        question: '2023年贝壳新房开启的管理机制是（ ）',
+        options: [
+            'A. GTV管理',
+            'B. 健康度管理',
+            'C. 行指管理',
+            'D. 费率管理'
+        ],
+        answer: 'C',
+        explanation: 'P35：2023年至今以行指管理为辅，提高渠道市场竞争力'
+    },
+    {
+        id: 198,
+        type: 'single',
+        question: '"盘客一体"策略是指（ ）',
+        options: [
+            'A. 盘源和客户统一管理',
+            'B. 运营端共同对新房行指负责',
+            'C. 经纪人同时负责盘源和客源',
+            'D. 开发商和渠道联合销售'
+        ],
+        answer: 'B',
+        explanation: 'P35小贴士定义"盘客一体是运营端考核新房行指绩效，共同对新房行指负责"'
+    },
+    {
+        id: 199,
+        type: 'single',
+        question: '贝壳新房业务的核心执行阶段是（ ）',
+        options: [
+            'A. 拓盘',
+            'B. 打盘',
+            'C. 回款结佣',
+            'D. 风险管控'
+        ],
+        answer: 'B',
+        explanation: 'P34定义"打盘是新房业务的核心执行阶段"'
+    },
+    {
+        id: 200,
+        type: 'multi',
+        question: '贝壳新房业务优势包括（ ）',
+        options: [
+            'A. 平台模式优势',
+            'B. 资源整合优势',
+            'C. 营销服一体化优势',
+            'D. 独家房源垄断优势',
+            'E. 价格最低优势'
+        ],
+        answer: ['A','B','C'],
+        explanation: 'P35列举三大优势：平台模式、资源整合、营销服一体化'
+    },
+    {
+        id: 201,
+        type: 'multi',
+        question: '新房通用岗位能力包括（ ）',
+        options: [
+            'A. 客户关系管理能力',
+            'B. 市场分析能力',
+            'C. 谈判能力',
+            'D. 结果导向能力',
+            'E. 合规意识'
+        ],
+        answer: ['A','B','C','D','E'],
+        explanation: 'P32-33列举7项能力，包含所有选项'
+    },
+
+    // 202-211：综合题目
+    {
+        id: 202,
+        type: 'single',
+        question: '2022年贝壳新房月均VR带看量达（ ）',
+        options: [
+            'A. 50万次',
+            'B. 200万次',
+            'C. 400万次',
+            'D. 600万次'
+        ],
+        answer: 'C',
+        explanation: 'P33：2022年单月VR带看量突破400万次'
+    },
+    {
+        id: 203,
+        type: 'single',
+        question: '贝壳新房组织架构中，负责本地业务拓展的是（ ）',
+        options: [
+            'A. 集团总部',
+            'B. 区域新房事业部',
+            'C. 城市新房事业部',
+            'D. 门店'
+        ],
+        answer: 'C',
+        explanation: 'P33：城市层面设城市新房事业部负责本地业务拓展'
+    },
+    {
+        id: 204,
+        type: 'single',
+        question: '2024年贝壳推出的创新服务模式是（ ）',
+        options: [
+            'A. 快佣模式',
+            'B. 无忧购',
+            'C. 优鲜卖',
+            'D. VR带看'
+        ],
+        answer: 'C',
+        explanation: 'P33：2024年贝壳新房推出"优鲜卖"模式'
+    },
+    {
+        id: 205,
+        type: 'single',
+        question: '"五看"中的"看宏观"是指（ ）',
+        options: [
+            'A. 长期看人口、中期看土地、短期看政策',
+            'B. 看一二手供应量价走势',
+            'C. 看开发商特性及渠道机会',
+            'D. 看城市行业生态'
+        ],
+        answer: 'A',
+        explanation: 'P34：看宏观即"长期看人口，中期看土地，短期看政策"'
+    },
+    {
+        id: 206,
+        type: 'single',
+        question: '回款结佣阶段的关键是（ ）',
+        options: [
+            'A. 快速签约',
+            'B. 全流程把控',
+            'C. 提高费率',
+            'D. 增加带看量'
+        ],
+        answer: 'B',
+        explanation: 'P34：回款管理需全流程把控（前期评估、中期监控、后期破局）'
+    },
+    {
+        id: 207,
+        type: 'judge',
+        question: '贝壳新房定位仅是房产交易服务平台',
+        answer: false,
+        explanation: 'P33：2023年后定位不仅是交易平台，更是开发商赋能者和供给侧升级推动者'
+    },
+    {
+        id: 208,
+        type: 'judge',
+        question: '新房作业中"渠道>盘源"原则是因为开发商更需客源',
+        answer: true,
+        explanation: 'P35：新房去化周期拉长，开发商对新增客源需求巨大，渠道势能更重要'
+    },
+    {
+        id: 209,
+        type: 'judge',
+        question: '梯户比"一梯两户"优于"两梯四户"',
+        answer: true,
+        explanation: 'P31：对于相同比例的梯户比，户数少的楼房较好'
+    },
+    {
+        id: 210,
+        type: 'judge',
+        question: '住宅小区容积率2.5属于低密度住宅',
+        answer: false,
+        explanation: 'P31：容积率在1.5以下的住宅才可视为低密度住宅'
+    },
+    {
+        id: 211,
+        type: 'judge',
+        question: '贝壳新房业务中消费者是C端，开发商是B端',
+        answer: true,
+        explanation: 'P35小贴士：消费者是终端客户（C端），开发商是房源端合作客户（B端）'
+    },
         ];
 
         // 当前考试相关数据
@@ -2926,7 +3368,7 @@
         const copyLinkBtn = document.getElementById('copyLinkBtn');
 
         // 登录功能
-        document.getElementById('loginBtn').addEventListener('click', function() {
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
@@ -2951,7 +3393,7 @@
             } else {
                 alert('请输入用户名和密码');
             }
-        });
+
 
         // 开始考试
         function startExam() {
@@ -3269,72 +3711,10 @@
             });
         }
         
-        // 使用帮助功能
-        showHelpBtn.addEventListener('click', function() {
-            helpModal.style.display = 'flex';
-        });
-        
-        closeHelp.addEventListener('click', function() {
-            helpModal.style.display = 'none';
-        });
-        
-        // 点击模态框外部关闭
-        window.addEventListener('click', function(event) {
-            if (event.target === helpModal) {
-                helpModal.style.display = 'none';
-            }
-        });
-        
-        // 复制分享指南
-        copyGuideBtn.addEventListener('click', function() {
-            const guideText = `如何打开贝壳新房搏学考试系统：
-            
-1. 保存HTML文件到您的设备（电脑或手机）
-2. 通过以下方式打开：
-   - 电脑：双击HTML文件或在浏览器中打开
-   - 手机：在文件管理器中点击HTML文件，选择用浏览器打开
-3. 使用演示账号登录：
-   用户名: syh
-   密码: 123
-   
-注意：如果打开后页面显示不正常，请尝试使用Chrome、Edge或Safari浏览器。`;
-
-            navigator.clipboard.writeText(guideText)
-                .then(() => {
-                    alert('分享指南已复制到剪贴板！');
-                })
-                .catch(err => {
-                    console.error('复制失败:', err);
-                    alert('复制失败，请手动复制文本');
-                });
-        });
-        
-        // 复制文件分享指南
-        copyLinkBtn.addEventListener('click', function() {
-            const guideText = `请按以下步骤使用贝壳新房搏学考试系统：
-            
-1. 将此HTML文件保存到您的设备
-2. 打开方式：
-   - 电脑：双击文件或在浏览器中打开
-   - 手机：在文件管理器中找到文件并点击，选择用浏览器打开
-3. 登录账号：
-   用户名: syh
-   密码: 123
-   
-如果打开后页面显示不正常，请使用Chrome、Edge或Safari浏览器。`;
-
-            navigator.clipboard.writeText(guideText)
-                .then(() => {
-                    alert('文件分享指南已复制到剪贴板！');
-                })
-                .catch(err => {
-                    console.error('复制失败:', err);
-                    alert('复制失败，请手动复制文本');
-                });
-        });
+       
 
         // 页面加载时添加用户指引
-        window.addEventListener('DOMContentLoaded', function() {
+
             // 添加首次使用提示
             if (!localStorage.getItem('hasSeenGuide')) {
                 setTimeout(function() {
@@ -3342,7 +3722,3 @@
                     localStorage.setItem('hasSeenGuide', 'true');
                 }, 2000);
             }
-        });
-    </script>
-</body>
-</html>
